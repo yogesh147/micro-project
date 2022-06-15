@@ -5,8 +5,10 @@ spring:
       active: dev  
 server: 
    port: 9001
-   
+
 eureka:
-   instance:
-      hostname: localhost  
-   
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/   
