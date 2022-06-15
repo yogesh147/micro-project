@@ -30,7 +30,7 @@ public class EurekaServerApplication implements CommandLineRunner {
 		log.info("App running on --------- http://localhost:{}", env.getProperty("server.port"));
 		System.out.println("");
 		System.out.println(
-				"------------------------------------ Eureka Server Running on 8761 ------------------------------------------------------");
+				"------------------------------------ Eureka Server Running on "+ env.getProperty("server.port") +"------------------------------------------------------");
 		System.out.println("");
 		log.debug("Debug Mode is ON for Eureka Server");
 	}

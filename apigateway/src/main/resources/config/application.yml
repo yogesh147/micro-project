@@ -16,6 +16,10 @@ spring:
             - Path=/contact/**
 server:
   port: 8999
+
 eureka:
-  instance:
-    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/

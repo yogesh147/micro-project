@@ -4,16 +4,16 @@ spring:
   profiles:
       active: dev  
 server: 
-   port: 8761
+   port: 8888
    
 eureka:
+  instance:
+    hostname: localhost
   client:
-   registerWithEureka: false
-   fetchRegistry: false
-   server:
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
      waitTimeInMsWhenSyncEmpty: 0
-   instance:
-      hostname: localhost 
-
-debug: true     
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
    
