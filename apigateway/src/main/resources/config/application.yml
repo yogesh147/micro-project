@@ -10,10 +10,21 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/user/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: user-service
+                fallbackuri: forward:/userServiceFallback  
+                 
         - id: contact-service
           uri: lb://contact-service
           predicates:
             - Path=/contact/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: contact-service
+                fallbackuri: forward:/contactServiceFallback 
 server:
   port: 8999
 
@@ -23,3 +34,21 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://localhost:8888/eureka/
+      
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+            
+management:
+  endpoint:
+    web:
+      exposure:
+        include: hystrix.stream
+            
+      
+      
+      
